@@ -1,1 +1,1 @@
-# Identifying-Genes-Associated-with-Symptom-Status
+This folder contains images for the wiki.
