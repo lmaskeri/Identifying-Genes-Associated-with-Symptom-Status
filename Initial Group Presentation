@@ -1,2 +1,37 @@
 
 https://docs.google.com/presentation/d/1L5sATRGqHNb32mtIS8txKUlqP_ezhuKKso6_YRucLfc/edit#slide=id.gc8c7b00113_0_148
+
+1. Introduction (4-5 min, 4 pts)
+What is the problem you aim to solve? Why is this problem interesting?
+What has been done previously? Cite and describe 2-3 previous publications or software tools.
+How do your project goals differ from what has been done before?
+How will solving the problem increase biological knowledge?
+2. Implementation Plan (3-4 min, 2 pts)
+What programming language(s) will you use?
+What software and/or packages/modules will you use?
+What is your input data? Where does it come from?
+How is the data processed? What is your planned workflow?
+What databases will you access?
+What will your output look like?
+How will you test your code?
+3. Weekly Milestones (3-4 min, 2 pts)
+The milestones come from your group's Design Doc. Build a table with weeks as rows and group members as columns. Include this table on your GitHub repo and include a few highlights in your presentation (i.e. don’t read the table, but point out a few key benchmarks). Something like this:
+Week	Corin	Carrie	Janet
+Mar 13	help prepare slides for intro, give presentation intro	help prepare slides for implementation plan, give presentation implementation plan	
+help prepare slides (weekly benchmarks) - make workflow diagram, make weekly benchmarks table on GitHub Wiki
+
+Mar 20	
+understand data structure of DBxyz, figure out what output we want, resolve pull requests on Wiki
+
+write code to access DBxyz and get desired output	test Carrie’s code for DBxyz access, keep GitHub Wiki up to date
+etc…	 	 	 
+In each cell, note what each person will plan to accomplish that week.
+Divide tasks as equally as possible according to each individual’s strengths. Decide whether you’d like to pair program or work on sections individually. Everyone should test code.
+Those not doing the bulk of programming should do more of the writing for the Application Note and documentation.
+Presentation responsibilities should be divided up over the semester so everyone presents at some point.
+You should update your table on your repo and in your 5-min group progress presentations as you complete tasks and add new ones.
+Example Wiki 1. Example Wiki 2.
+4. Question & Answers (5 min max, 2 pts)
+This is an opportunity to clarify things you presented and gauge your understanding of the material.
+During presentations by other groups, your active participation in asking relevant questions will be noted and may lead to an extra credit point or two over the course of the semester.
+Additional resources for assignment
