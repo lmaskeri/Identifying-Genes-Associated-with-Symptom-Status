@@ -19,7 +19,7 @@ def getAnnotations(GCF):
 
 def moveAnnotations(GCF):
     for i in GCF:
-        command3 = "mv ./Annotations/ncbi_dataset/data/"+i+".1/"+i+"_ASM"+i[6:12]+"v1_genomic.fna Assemblies" #putting all assemblies  for each accession number into an assemblies folder
+        command3 = "mv ./Annotations/ncbi_dataset/data/"+i+".1/"+i+".1_ASM"+i[6:12]+"v1_genomic.fna Assemblies" #putting all assemblies  for each accession number into an assemblies folder
         os.system(command3)
         command4 = "mv ./Annotations/ncbi_dataset/data/"+ i+ ".1/protein.faa " + i + "_protein.faa" #renamed each protein sequence from the annotations retrieved from ncbi for each accession number
         os.system(command4)
