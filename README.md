@@ -72,3 +72,12 @@ This script creates a list of homologous genes from the centroid fasta file, the
 * Samples with UUI presence absence matrix
 * All Samples presence absence matrix
  
+ ### Quantitative Association Testing
+ 
+ This is still in the works at the moment, but to see some results, run the the quantitative_association python script:
+ ```
+ python3 quantitative_association.py
+ ```
+#### Output:
+* Quantitative_Association_Summary_Results.txt which summarizes some basic presence/absence questions and frequencies about each symptom group.
+* Genes_Present_Within_Strains.txt which supplies the user with all genes presence within each strain for every symptom group.
