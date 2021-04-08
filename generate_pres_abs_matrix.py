@@ -89,7 +89,7 @@ writer3.writerow(header)
 writer4.writerow(header)
 writer5.writerow(header)
 
-for i in range(len(strain_symptoms)): 
+for i in range(len(strain_symptoms) - 1): 
     strain_row = [strain_symptoms[i][0]] #placing the strain number as the first item in the row
     strain_row.append(strain_symptoms[i][1]) #placing the strain symptom associated with that strain from the data
     strain_pres_abs = pres_abs[i] #pulling out the presence absence dictionary for this particular strain
