@@ -30,9 +30,17 @@ python3 getAnnotations.py
 ```
 ### 2. Obtain Clusters and Centroid Sequences Using Usearch
 
-Run the usearch command to obtain clusters: 
+Before using Usearch, the binary Usearch downloaded from https://drive5.com/usearch/download.html, must be unzipped using this command:
 ```
-./usearch_lin -cluster_fast proteinSeqs.faa -id 0.90 -centroids nr.fasta -clusters cluster_dir/c_
+gunzip usearch_linux 
+```
+Then this command must be run to gain access to the binary file:
+```
+chmod +x ./usearch_linux
+```
+To run the usearch command to obtain clusters: 
+```
+./usearch_linux -cluster_fast proteinSeqs.faa -id 0.90 -centroids nr.fasta -clusters cluster_dir/c_
 ```
 Usearch uses the cluster_fast method in order to produce similar gene clustering accross all sample strains. The centroids used to define these clusters are the homologous genes that we will be looking at.
 
