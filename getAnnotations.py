@@ -23,7 +23,7 @@ def moveAnnotations(GCF):
         os.system(command3)
         command4 = "mv ./Annotations/ncbi_dataset/data/"+ i+ ".1/protein.faa " + i + "_protein.faa" #renamed each protein sequence from the annotations retrieved from ncbi for each accession number
         os.system(command4)
-        command5 = "mv "+ i+ ".1/" + i + "_protein.faa ProteinSeqs" #moving the protein sequence file into a file called ProteinSeqs for all accession numbers
+        command5 = "mv " + i + "_protein.faa ProteinSeqs" #moving the protein sequence file into a file called ProteinSeqs for all accession numbers
         os.system(command5)
         command6 = "cat ./ProteinSeqs*.faa > ProteinSeqs.faa" #merges protein sequences in ProteinSeqs folder into one multi fasta file
         os.system(command6) 
