@@ -28,6 +28,10 @@ To obtain the test dataset, run the getAnnotations python script which will use 
 ```
 python3 getAnnotations.py
 ```
+### Output:
+Individual annotations for each strain in Annotations folder
+ProteinSeqs folder with a file of protein sequences of every CDS for each strain
+ProteinSeqs.faa file that contains all protein sequences for every strain (for use in uClust)
 ### 2. Obtain Clusters and Centroid Sequences Using Usearch
 
 Before using Usearch, the binary Usearch downloaded from https://drive5.com/usearch/download.html, must be unzipped using this command:
