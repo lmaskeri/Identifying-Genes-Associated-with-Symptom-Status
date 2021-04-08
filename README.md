@@ -38,7 +38,11 @@ Then this command must be run to gain access to the binary file:
 ```
 chmod +x ./usearch_linux
 ```
-To run the usearch command to obtain clusters: 
+Finally, a directory must be made for usearch to place the cluster files into:
+```
+mkdir cluster_dir
+```
+Now that all variables are prepared, run the usearch command to obtain clusters: 
 ```
 ./usearch_linux -cluster_fast ProteinSeqs.faa -id 0.90 -centroids nr.fasta -clusters cluster_dir/c_
 ```
