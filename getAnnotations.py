@@ -25,7 +25,7 @@ def moveAnnotations(GCF):
         os.system(command4)
         command5 = "mv " + i + "_protein.faa ProteinSeqs" #moving the protein sequence file into a file called ProteinSeqs for all accession numbers
         os.system(command5)
-        command6 = "cat ./ProteinSeqs*.faa > ProteinSeqs.faa" #merges protein sequences in ProteinSeqs folder into one multi fasta file
+        command6 = "cat ./ProteinSeqs/*.faa > ProteinSeqs.faa" #merges protein sequences in ProteinSeqs folder into one multi fasta file
         os.system(command6) 
 os.system("mkdir ProteinSeqs") #making a folder for the protein annotations for each accession number
 os.system("mkdir Assemblies") #making a folder for Assemblies 
