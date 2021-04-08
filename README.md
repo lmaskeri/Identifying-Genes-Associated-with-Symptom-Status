@@ -40,7 +40,7 @@ chmod +x ./usearch_linux
 ```
 To run the usearch command to obtain clusters: 
 ```
-./usearch_linux -cluster_fast proteinSeqs.faa -id 0.90 -centroids nr.fasta -clusters cluster_dir/c_
+./usearch_linux -cluster_fast ProteinSeqs.faa -id 0.90 -centroids nr.fasta -clusters cluster_dir/c_
 ```
 Usearch uses the cluster_fast method in order to produce similar gene clustering accross all sample strains. The centroids used to define these clusters are the homologous genes that we will be looking at.
 
