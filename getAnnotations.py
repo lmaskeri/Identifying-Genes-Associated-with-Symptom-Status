@@ -30,6 +30,6 @@ def moveAnnotations(GCF):
 os.system("mkdir ProteinSeqs") #making a folder for the protein annotations for each accession number
 os.system("mkdir Assemblies") #making a folder for Assemblies 
 
-getAnnotations(getList("EcoliAccessions.txt"))
-moveAnnotations(getList("EcoliAccessions.txt"))
+getAnnotations(getList("ecoliAccessions.txt"))
+moveAnnotations(getList("ecoliAccessions.txt"))
 
