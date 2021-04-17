@@ -124,9 +124,15 @@ DJECODEN_00003 mRNA 1344 yeeO_1
 
 ```
 locus_tag: the locus name of the annotated gene
+
 ftype: Type, the default is CDS, if you turn on the --addgenes and --addmrna parameters, it will distinguish between RNA and coding genes
+
 length_bp: sequence length
+
 gene: According to the gene name corresponding to the database annotation, if it is multiple copies, use_1_2, etc. to distinguish
+
 EC_number: EC value corresponding to the gene
+
 COG: COG corresponding to the gene
+
 product: The protein product encoded by the gene
