@@ -90,4 +90,7 @@ $ prokka --outdir egd --prefix egd --addgenes --addmrna --compliant --centre CDC
 ## Output Files
 
 The output files we will focus is the . faa files which means protein FASTA file of the translated CDS sequences. 
+
+## Reference 
+
  
