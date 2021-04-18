@@ -49,15 +49,42 @@ strain_info = getList() #getting the strain information from the "strain_symptom
 strain_gene_dict = getStrainGenes(strain_info) #dictionary containing the strains as keys and the gene accession numbers for each strain as values
 
 
+#opening the csv file to write out to 
 cluster_matrix = open("cluster_pres_abs_matrix.csv", "w", newline = "") 
 writer = csv.writer(cluster_matrix)
 
-header = []
-header.append("Cluster Number")
+#creating the header row and the symptom row for correlation testing
+header = [] #list to hold the header row
+sympt_vals = [] #list to hold the symptom row 
+header.append("Strain Number")
+sympt_vals.append("Strain Symptom")
+
+'''
+Symptom Key:
+0 = No Lower Urinary Tract Symptoms (no LUTS)
+
+1 = Overactive bladder (OAB)
+
+2 = Urinary Tract Infection (UTI)
+
+3 = Urgency Urinary Incontinence (UUI)
+'''
+
 for strain in strain_info:
     header.append(strain[1])
+    if strain[2] == "0":
+        sympt_vals.append("NoLUTS")
+    if strain[2] == "1":
+        sympt_vals.append("OAB")
+    if strain[2] == "2":
+        sympt_vals.append("UTI")
+    if strain[2] == "3":
+        sympt_vals.append("UUI")
+
     
-writer.writerow(header)
+writer.writerow(header) #write the header row out to the csv file
+writer.writerow(sympt_vals) #write the symptom row out to the csv file 
+                          
 
 for cluster_filename in os.listdir("./cluster_dir"):
     cluster_values = [] #setting up a list for the cluster row presence absence values
@@ -74,6 +101,8 @@ for cluster_filename in os.listdir("./cluster_dir"):
     writer.writerow(cluster_values)
     
 cluster_matrix.close() #this matrix will have to be transposed so that the strain numbers are the first column and each column is the cluster presence absence values
+
+
 
         
         
