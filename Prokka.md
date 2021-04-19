@@ -68,6 +68,7 @@ $ prokka egd.fasta
 ```
 `--listdb` parameter can view prokka database information.
 
+` ls *.fna | parallel --verbose "prokka {} --prefix {.}_out" `command can help annote serval seqs at the same time
 ```
 
 # View available databases
