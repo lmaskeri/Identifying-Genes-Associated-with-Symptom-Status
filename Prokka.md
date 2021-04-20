@@ -68,7 +68,9 @@ $ prokka egd.fasta
 ```
 `--listdb` parameter can view prokka database information.
 
-` ls *.fna | parallel --verbose "prokka {} --prefix {.}_out" `command can help annote serval seqs at the same time
+``` ls *.fna | parallel --verbose "prokka {} --prefix {.}_out" ```command can help annote serval seqs at the same time
+
+``` cp -r `find -iname *.faa` /your/own/path) ``` Copy all the .faa files to your specific path
 ```
 
 # View available databases
