@@ -68,6 +68,9 @@ $ prokka egd.fasta
 ```
 `--listdb` parameter can view prokka database information.
 
+``` ls *.fna | parallel --verbose "prokka {} --prefix {.}_out" ```command can help annote serval seqs at the same time
+
+``` cp -r `find -iname *.faa` /your/own/path) ``` Copy all the .faa files to your specific path
 ```
 
 # View available databases
@@ -89,50 +92,8 @@ $ prokka --outdir egd --prefix egd --addgenes --addmrna --compliant --centre CDC
 
 ## Output Files
 
-| Extension | Description |
-| --------- | ----------- |
-| .gff | This is the master annotation in GFF3 format, containing both sequences and annotations. It can be viewed directly in Artemis or IGV. |
-| .gbk | This is a standard Genbank file derived from the master .gff. If the input to prokka was a multi-FASTA, then this will be a multi-Genbank, with one record for each sequence. |
-| .fna | Nucleotide FASTA file of the input contig sequences. |
-| .faa | Protein FASTA file of the translated CDS sequences. |
-| .ffn | Nucleotide FASTA file of all the prediction transcripts (CDS, rRNA, tRNA, tmRNA, misc_RNA) |
-| .sqn | An ASN1 format "Sequin" file for submission to Genbank. It needs to be edited to set the correct taxonomy, authors, related publication etc. |
-| .fsa | Nucleotide FASTA file of the input contig sequences, used by "tbl2asn" to create the .sqn file. It is mostly the same as the .fna file, but with extra Sequin tags in the sequence description lines. |
-| .tbl | Feature Table file, used by "tbl2asn" to create the .sqn file. |
-| .err | Unacceptable annotations - the NCBI discrepancy report. |
-| .log | Contains all the output that Prokka produced during its run. This is a record of what settings you used, even if the --quiet option was enabled. |
-| .txt | Statistics relating to the annotated features found. |
-| .tsv | Tab-separated file of all features: locus_tag,ftype,len_bp,gene,EC_number,COG,product |
+The output files we will focus is the . faa files which means protein FASTA file of the translated CDS sequences. 
 
-## .tsv files
-The tsv file sorts the results of the comments in the order of locus_tag.
+## Reference 
 
-```
-#Display tsv content (only in this case)
-$ head PROKKA_04172021.tsv
-
-locus_tag ftype length_bp gene EC_number COG product
-DJECODEN_00001 CDS 1356 dnaA COG0593 Chromosomal replication initiator protein DnaA
-DJECODEN_00001 gene 1356 dnaA
-DJECODEN_00001 mRNA 1356 dnaA
-DJECODEN_00002 CDS 1146 dnaN COG0592 Beta sliding clamp
-DJECODEN_00002 gene 1146 dnaN
-DJECODEN_00002 mRNA 1146 dnaN
-DJECODEN_00003 CDS 1344 yeeO_1 COG0534 putative FMN/FAD exporter YeeO
-DJECODEN_00003 gene 1344 yeeO_1
-DJECODEN_00003 mRNA 1344 yeeO_1
-
-```
-locus_tag: the locus name of the annotated gene
-
-ftype: Type, the default is CDS, if you turn on the --addgenes and --addmrna parameters, it will distinguish between RNA and coding genes
-
-length_bp: sequence length
-
-gene: According to the gene name corresponding to the database annotation, if it is multiple copies, use_1_2, etc. to distinguish
-
-EC_number: EC value corresponding to the gene
-
-COG: COG corresponding to the gene
-
-product: The protein product encoded by the gene
+ 
