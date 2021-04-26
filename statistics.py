@@ -1,5 +1,3 @@
-
-
 from Bio import SeqIO
 import csv
 import os
@@ -16,14 +14,14 @@ def transpose(file): #method for transposing the pres/abs matrix
     return rez
 
 
-def kendall(names, matrix):
+def kendall(names, matrix,code):
     # matrix = pd.read_csv("transposed.csv") #open transposed pres_abs matrix
     
     correlations = {} #initialize dictionary for keys as cluster names and values as correlation coefficients 
     correlations_p = {} #empty dictionary to hold p-values from correlation significance tests
 
-    results1 = open("correlation_results.txt","w") #results text file, will state the highest positive corr. cluster and highest neg. corr. cluster
-    results2 = open("correlation_matrix.csv","w") # csv file that will hold all clusters correlation coefficients
+    results1 = open(code+"_correlation_results.txt","w") #results text file, will state the highest positive corr. cluster and highest neg. corr. cluster
+    results2 = open(code+"_correlation_matrix.csv","w") # csv file that will hold all clusters correlation coefficients
     y = matrix["Strain Symptom"].to_list() #make the symptom status into a list 
     for i in names: #for i in cluster name list
         x = matrix[i].to_list() #make the clusters column into a list
@@ -71,5 +69,8 @@ final_uti = pd.concat([uti, no_luts], ignore_index=True, sort=False)
 final_uui = pd.concat([uui, no_luts], ignore_index=True, sort=False)
 
 #running kendalls tau for each matrix
-kendall(cluster_values, final_oab)
+kendall(cluster_values, final_oab,"oab")
+kendall(cluster_values,final_uti,"uti")
+kendall(cluster_values,final_uui,"uui")
+
 
