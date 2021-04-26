@@ -19,7 +19,7 @@ def kendall(names, matrix,code):
     
     correlations = {} #initialize dictionary for keys as cluster names and values as correlation coefficients 
     correlations_p = {} #empty dictionary to hold p-values from correlation significance tests
-    
+
     results1 = open(code+"_correlation_results.txt","w") #results text file, will state the highest positive corr. cluster and highest neg. corr. cluster
     results2 = open(code+"_correlation_matrix.csv","w") # csv file that will hold all clusters correlation coefficients
     y = matrix["Strain Symptom"].to_list() #make the symptom status into a list 
@@ -36,9 +36,6 @@ def kendall(names, matrix,code):
     k=list(correlations.keys()) #make a list of the correlations jeys 
     positive = k[v.index(max(v))] #find key with max value
     negative = k[v.index(min(v))] #find key with min value 
-    pos_corr = correlations[positive]
-    neg_corr = correlations[negative]
-    
     results1.write("The clusters whose correlation coefficients are statistically significant are: \n")
     for key,value in correlations_p.items():
         if value <=0.05: #significance level is 0.05
@@ -48,10 +45,8 @@ def kendall(names, matrix,code):
     writer = csv.writer(results2)
     for key,value in correlations.items():
         writer.writerow([key,value]) #write keys and values to a matrix in csv format
-       
     results2.close()
-    
-    return correlations, [positive,pos_corr,negative,_neg_corr]
+    return correlations
 
 #pulling out the names of all clusters using file directory
 cluster_values = [] #empty list to append cluster filenames to
@@ -62,21 +57,20 @@ r = transpose("cluster_pres_abs_matrix.csv") #transpose full matrix
 
 #Splitting the matrix up into each symptom with the added control no LUTS
 
-no_luts = r.loc[r['Strain Symptom'] == "NoLUTS"] #pulling out all of the control patient sample rows
-oab = r.loc[r['Strain Symptom'] == "OAB"] #pulling out all of the OAB patient sample rows
-uti = r.loc[r['Strain Symptom'] == "UTI"] #pulling out all of the UTI patient sample rows
-uui = r.loc[r['Strain Symptom'] == "UUI"] #pulling out all of the UUI patient sample rows
+control = r.loc[r['Strain Symptom'] == "Control Symptom"] #pulling out all of the control patient sample rows
+symp1 = r.loc[r['Strain Symptom'] == "Symptom 1"] #pulling out all of the OAB patient sample rows
+symp2 = r.loc[r['Strain Symptom'] == "Symptom 2"] #pulling out all of the UTI patient sample rows
+symp3 = r.loc[r['Strain Symptom'] == "Symptom 3"] #pulling out all of the UUI patient sample rows
 
 # #combining a new dataframe with each symptom and the control group for correlation testing
 
-final_oab = pd.concat([oab, no_luts], ignore_index=True, sort=False)
-final_uti = pd.concat([uti, no_luts], ignore_index=True, sort=False)
-final_uui = pd.concat([uui, no_luts], ignore_index=True, sort=False)
+final_symp1 = pd.concat([symp1, control], ignore_index=True, sort=False)
+final_symp2 = pd.concat([symp2, control], ignore_index=True, sort=False)
+final_symp3= pd.concat([symp3, control], ignore_index=True, sort=False)
 
 #running kendalls tau for each matrix
-oab_corr,oab_pos_neg= kendall(cluster_values, final_oab,"oab")
-uti_corr,uti_pos_neg = kendall(cluster_values,final_uti,"uti")
-uui_corr,uui_pos_neg = kendall(cluster_values,final_uui,"uui")
-
+kendall(cluster_values, final_symp1,"Symptom1")
+kendall(cluster_values,final_symp2,"Symptom2")
+kendall(cluster_values,final_symp3,"Symptom3")
 
 
