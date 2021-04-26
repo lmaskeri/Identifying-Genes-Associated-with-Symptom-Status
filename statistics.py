@@ -19,7 +19,7 @@ def kendall(names, matrix,code):
     
     correlations = {} #initialize dictionary for keys as cluster names and values as correlation coefficients 
     correlations_p = {} #empty dictionary to hold p-values from correlation significance tests
-
+    
     results1 = open(code+"_correlation_results.txt","w") #results text file, will state the highest positive corr. cluster and highest neg. corr. cluster
     results2 = open(code+"_correlation_matrix.csv","w") # csv file that will hold all clusters correlation coefficients
     y = matrix["Strain Symptom"].to_list() #make the symptom status into a list 
@@ -36,6 +36,9 @@ def kendall(names, matrix,code):
     k=list(correlations.keys()) #make a list of the correlations jeys 
     positive = k[v.index(max(v))] #find key with max value
     negative = k[v.index(min(v))] #find key with min value 
+    pos_corr = correlations[positive]
+    neg_corr = correlations[negative]
+    
     results1.write("The clusters whose correlation coefficients are statistically significant are: \n")
     for key,value in correlations_p.items():
         if value <=0.05: #significance level is 0.05
@@ -45,8 +48,10 @@ def kendall(names, matrix,code):
     writer = csv.writer(results2)
     for key,value in correlations.items():
         writer.writerow([key,value]) #write keys and values to a matrix in csv format
+       
     results2.close()
-    return correlations
+    
+    return correlations, [positive,pos_corr,negative,_neg_corr]
 
 #pulling out the names of all clusters using file directory
 cluster_values = [] #empty list to append cluster filenames to
@@ -69,8 +74,9 @@ final_uti = pd.concat([uti, no_luts], ignore_index=True, sort=False)
 final_uui = pd.concat([uui, no_luts], ignore_index=True, sort=False)
 
 #running kendalls tau for each matrix
-kendall(cluster_values, final_oab,"oab")
-kendall(cluster_values,final_uti,"uti")
-kendall(cluster_values,final_uui,"uui")
+oab_corr,oab_pos_neg= kendall(cluster_values, final_oab,"oab")
+uti_corr,uti_pos_neg = kendall(cluster_values,final_uti,"uti")
+uui_corr,uui_pos_neg = kendall(cluster_values,final_uui,"uui")
+
 
 
