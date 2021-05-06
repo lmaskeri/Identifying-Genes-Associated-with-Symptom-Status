@@ -1,5 +1,43 @@
 # Identifying Genes Associated with Symptom Status
 
+## Introduction
+
+Our pipleline will use python scripts as programming language and Linux as operating system
+
+## Software
+
+### 1. Prokka: for genome annotation
+https://github.com/tseemann/prokka
+### 2. Usearch: for sequence analysis
+https://www.drive5.com/usearch/
+### 3. Packages Imported for Python
+
+ #### a. os
+ https://docs.python.org/3/library/os.html
+ #### b. Argparse
+ https://docs.python.org/3/library/argparse.html
+
+ #### c. Scipy.stats
+ kendalltau
+ #### d. Pandas
+ #### e. Biopython
+ https://biopython.org/wiki/Documentation
+         From Biopython:
+         SeqIO
+         https://biopython.org/docs/1.75/api/Bio.SeqIO.html
+
+
+
+
+## Scripts Included
+### 1. Generate_cluster_pres_abs.py
+
+### 2. Statistics.py 
+## Output Files
+### 1. _correlation_results.txt
+### 2. _correlation_matrix.csv
+### 3. ResultsTable.csv
+
 ## Installation
 
 In order to run this code from your working directory, use this git command to clone this repository to your workspace:
@@ -81,4 +119,4 @@ This script creates a list of homologous genes from the centroid fasta file, the
 #### Output:
 * Quantitative_Association_Summary_Results.txt which summarizes some basic presence/absence questions and frequencies about each symptom group.
 * Genes_Present_Within_Strains.txt which supplies the user with all genes present within each strain for every symptom group.
-
+## User Directions
