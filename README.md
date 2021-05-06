@@ -21,7 +21,7 @@ https://www.drive5.com/usearch/
  kendall tau
  https://www.statisticshowto.com/kendalls-tau/
  #### d. Pandas
- https://pandas.pydata.org/
+ https://pandas.pydata.org/pandas-docs/stable/getting_started/install.html
  #### e. Biopython
  https://biopython.org/wiki/Documentation
          From Biopython:
@@ -48,7 +48,9 @@ Summary information about each symptom in a table format
 
 We will need conda to install Prokka, please make sure you have conda on your linux.
 To get more information with conda:
-https://docs.conda.io/projects/conda/en/latest/user-guide/install/linux.html
+https://docs.conda.io/en/latest/miniconda.html#linux-installers
+
+Make sure you are downloading the currect version matched your system!
 
 To check conda version:
 ```
@@ -100,13 +102,18 @@ Create the prokka environment, add the bioconda channel, install conda:
 conda create -n prokka-env -c conda-forge -c bioconda prokka
 ```
 
-Install the packages we need 
+Install python packages:
 
-Activate the environment(Make sure you do this before start annotation or Prokka will not work)
+Biopython:
+```conda install -c conda-forge biopython```
+Pandas:
+```conda install pandas```
+Scipy:
+```conda install -c anaconda scipy```
 
-```
-conda activate prokka-env
-```
+If there further questions, go back to the package instruction part and see details.
+
+
 
 This scrpit will organized all annotations and outputs into specific folders. 
 
