@@ -4,16 +4,26 @@
 from Bio import SeqIO
 import csv
 import os
+import argparse
 
 
-def getList(): #getting the information about each strain from the input csv file
-    strain_information = []
-    with open("./strain_symptom_samples.csv", "r") as in_file: #grabbing the strain # and symptom from the csv file
-        i = False
-        for row in in_file:
-            if i != False: #avoiding the first "Strain # and Participant Symtom" heading
-                strain_information.append(row.strip("\n").split(",")) #gives ["accession number", "strain_number", "Symtom status"] 
-            i = True
+def getList(flag): #getting the information about each strain from the input csv file
+    if flag == "test":
+        strain_information = []
+        with open("./Test_Data/Data_Information.csv", "r") as in_file: #grabbing the strain # and symptom from the csv file
+            i = False
+            for row in in_file:
+                if i != False: #avoiding the first "Strain # and Participant Symtom" heading
+                    strain_information.append(row.strip("\n").split(",")) #gives ["accession number", "strain_number", "Symtom status"] 
+                i = True
+    if flag == "user":
+        strain_information = []
+        with open("./Data_Information.csv", "r") as in_file: #grabbing the strain # and symptom from the csv file
+            i = False
+            for row in in_file:
+                if i != False: #avoiding the first "Strain # and Participant Symtom" heading
+                    strain_information.append(row.strip("\n").split(",")) #gives ["accession number", "strain_number", "Symtom status"] 
+                i = True
     
     return strain_information
  
@@ -24,11 +34,11 @@ def getStrainGenes(strain_info_in):
         strain_acc = strain_info_in[i][0]
         strain_num = strain_info_in[i][1]
         x = [] #list to append genes to
-        records = list(SeqIO.parse("./ProteinSeqs/"+strain_acc+"_protein.faa","fasta"))
+        records = list(SeqIO.parse("./ProteinSeqs/"+strain_acc+"_out.faa","fasta"))
         for record in records:
             x.append(record.id)
         gene_dict[strain_num]=x #making a dictionary with the strain number as the key and the list of gene accession numbers as the value
-
+    
     return gene_dict
  
 
@@ -40,9 +50,19 @@ def getClusterGenes(cluster_filename_in):
              cluster_genes.append(gene_name) #get a list of the genes in this one cluster
              #for computational purposes, this list is only created once and then compared to the genes in each strain 
     return cluster_genes
-         
- 
-strain_info = getList() #getting the strain information from the "strain_symptom_samples" csv file
+     
+
+#specifiy which flag to run
+parser = argparse.ArgumentParser(description = "Determine what data to run through script.")
+#adding an argument for the specific flag needed to determine which dataset the user wants to run
+parser.add_argument('dataset_to_run', type = str, help = "Specify which dataset you'd like to run: test_dataset or whole_dataset")
+#parsing the arguments
+argument = parser.parse_args()
+#argument.dataset_to_run now holds the string from the commandline that will determine if the test dataset is run or the user dataset is run
+
+flag = argument.dataset_to_run 
+
+strain_info = getList(flag) #getting the strain information from the "strain_symptom_samples" csv file
 
 strain_gene_dict = getStrainGenes(strain_info) #dictionary containing the strains as keys and the gene accession numbers for each strain as values
 
@@ -70,7 +90,7 @@ Symptom Key for Test Set:
 for strain in strain_info:
     header.append(strain[1])
     if strain[2] == "0":
-        sympt_vals.append("Control Symptom")
+        sympt_vals.append("Control")
     if strain[2] == "1":
         sympt_vals.append("Symptom 1")
     if strain[2] == "2":
@@ -95,18 +115,7 @@ for cluster_filename in os.listdir("./cluster_dir"):
         cluster_values.append(present_value)
     #write out the cluster value row to the csv file
     writer.writerow(cluster_values)
-    
+
 cluster_matrix.close() #this matrix will have to be transposed so that the strain numbers are the first column and each column is the cluster presence absence values
 
-
-
-        
-        
-                
-    
-
-
-        
-        
-                
     
