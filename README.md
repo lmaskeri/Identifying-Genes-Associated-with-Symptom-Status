@@ -85,7 +85,7 @@ python3 getAnnotations.py
 * Individual annotations for each strain in Annotations folder
 * ProteinSeqs folder with a file of protein sequences of every CDS for each strain
 * ProteinSeqs.faa file that contains all protein sequences for every strain (for use in Usearch)
-### 4. Prokka Annotation
+### 2. Prokka Annotation
 To install Prokka, make sure conda is installed on your os
 
 To check conda version:
