@@ -86,7 +86,7 @@ flag = argument.dataset_to_run
 
 #1. Run Prokka To obtain Annotation Files
 print("Starting Prokka to Obtain Annotation Files...")
-print("Note: For 66 assemblies, this should take ~20 minutes.")
+print("Note: For 66 assemblies, this should take ~25-30 minutes.")
 prokka(flag)
 print("Prokka Complete.")
 
