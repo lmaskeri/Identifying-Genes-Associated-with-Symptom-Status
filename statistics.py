@@ -132,7 +132,7 @@ symp1_list = makeResultsList("Symptom 1",symp1_pos_neg,symp1_pos_gene_name,symp1
 symp2_list = makeResultsList("Symptom 2",symp2_pos_neg,symp2_pos_gene_name,symp2_neg_gene_name,symp2_count)
 symp3_list = makeResultsList("Symptom 3",symp3_pos_neg,symp3_pos_gene_name,symp3_neg_gene_name,symp3_count)
 
-makeResultsTable(symp1_list,symp2_list,_list)
+makeResultsTable(symp1_list,symp2_list,symp3_list)
 
 
 
