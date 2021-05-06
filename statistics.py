@@ -10,7 +10,7 @@ def transpose(file): #method for transposing the pres/abs matrix
     new_header = rez.iloc[0]
     rez =rez[1:]
     rez.columns =new_header #removing header made during the transposition and replacing with the first line of the matrix
-    
+    rez.to_csv("data-transposed.csv")
     return rez
 
 
