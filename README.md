@@ -93,11 +93,14 @@ To check conda version:
 conda -V 
 ```
 
+
 Create the prokka environment, add the bioconda channel, install conda:
 
 ```
 conda create -n prokka-env -c conda-forge -c bioconda prokka
 ```
+
+Install the packages we need 
 
 Activate the environment(Make sure you do this before start annotation or Prokka will not work)
 
