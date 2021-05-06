@@ -91,6 +91,7 @@ def makeResultsTable(list1,list2,list3):
     data =[list1,list2,list3] #making a list of lists of all symptom lists made in makeResultsList method
     df = pd.DataFrame(data,columns = ["Symptom","Positive Name","Positive Correlation Value", "Positive Gene Name","Negative Name","Negative Correlation Value", "Negative Gene Name","Number of Significantly Correlated Clusters"])
     df.to_csv("ResultsTable.csv",index=False) #turning into a pandas dataframe and then into a csv file
+
 #pulling out the names of all clusters using file directory
 cluster_values = [] #empty list to append cluster filenTeddames to
 for cluster_filename in os.listdir("./cluster_dir"):
@@ -100,38 +101,38 @@ r = transpose("cluster_pres_abs_matrix.csv") #transpose full matrix
 
 #Splitting the matrix up into each symptom with the added control no LUTS
 
-no_luts = r.loc[r['Strain Symptom'] == "NoLUTS"] #pulling out all of the control patient sample rows
-oab = r.loc[r['Strain Symptom'] == "OAB"] #pulling out all of the OAB patient sample rows
-uti = r.loc[r['Strain Symptom'] == "UTI"] #pulling out all of the UTI patient sample rows
-uui = r.loc[r['Strain Symptom'] == "UUI"] #pulling out all of the UUI patient sample rows
+control = r.loc[r['Strain Symptom'] == "0"] #pulling out all of the control patient sample rows
+symp1 = r.loc[r['Strain Symptom'] == "1"] #pulling out all of the symptom 1 patient sample rows
+symp2 = r.loc[r['Strain Symptom'] == "2"] #pulling out all of the symptom 2 patient sample rows
+symp3 = r.loc[r['Strain Symptom'] == "3"] #pulling out all of the symptom 3 patient sample rows
 
 # #combining a new dataframe with each symptom and the control group for correlation testing
 
-final_oab = pd.concat([oab, no_luts], ignore_index=True, sort=False)
-final_uti = pd.concat([uti, no_luts], ignore_index=True, sort=False)
-final_uui = pd.concat([uui, no_luts], ignore_index=True, sort=False)
+final_symp1 = pd.concat([symp1, control], ignore_index=True, sort=False)
+final_symp2 = pd.concat([symp2, control], ignore_index=True, sort=False)
+final_symp3 = pd.concat([symp3, control], ignore_index=True, sort=False)
 
 #running kendalls tau for each matrix
-oab_corr,oab_pos_neg,oab_count= kendall(cluster_values, final_oab,"oab")
-uti_corr,uti_pos_neg, uti_count = kendall(cluster_values,final_uti,"uti")
-uui_corr,uui_pos_neg,uui_count = kendall(cluster_values,final_uui,"uui")
+symp1_corr,symp1_pos_neg,symp1_count= kendall(cluster_values, final_symp1,"symp1")
+symp2_corr,symp2_pos_neg, symp2_count = kendall(cluster_values,final_symp2,"symp2")
+symp3_corr,symp3_pos_neg,symp3_count = kendall(cluster_values,final_symp3,"symp3")
 
 #finding gene names for each positive and negative cluster for each symptom
-oab_pos_gene_name = findGeneName(oab_pos_neg[0])
-oab_neg_gene_name = findGeneName(oab_pos_neg[2])
+symp1_pos_gene_name = findGeneName(symp1_pos_neg[0])
+symp1_neg_gene_name = findGeneName(symp1_pos_neg[2])
 
-uti_pos_gene_name = findGeneName(uti_pos_neg[0])
-uti_neg_gene_name = findGeneName(uti_pos_neg[2])
+symp2_pos_gene_name = findGeneName(symp2_pos_neg[0])
+symp2_neg_gene_name = findGeneName(symp2_pos_neg[2])
 
-uui_pos_gene_name = findGeneName(uui_pos_neg[0])
-uui_neg_gene_name = findGeneName(uui_pos_neg[2])
+symp3_pos_gene_name = findGeneName(symp3_pos_neg[0])
+symp3_neg_gene_name = findGeneName(symp3_pos_neg[2])
 
 #making ResultsList for each symptom
-oab_list = makeResultsList("oab",oab_pos_neg,oab_pos_gene_name,oab_neg_gene_name,oab_count)
-uti_list = makeResultsList("uti",uti_pos_neg,uti_pos_gene_name,uti_neg_gene_name,uti_count)
-uui_list = makeResultsList("uui",uui_pos_neg,uui_pos_gene_name,uui_neg_gene_name,uui_count)
+symp1_list = makeResultsList("Symptom 1",symp1_pos_neg,symp1_pos_gene_name,symp1_neg_gene_name,symp1_count)
+symp2_list = makeResultsList("Symptom 2",symp2_pos_neg,symp2_pos_gene_name,symp2_neg_gene_name,symp2_count)
+symp3_list = makeResultsList("Symptom 3",symp3_pos_neg,symp3_pos_gene_name,symp3_neg_gene_name,symp3_count)
 
-makeResultsTable(oab_list,uti_list,uui_list)
+makeResultsTable(symp1_list,symp2_list,_list)
 
 
 
