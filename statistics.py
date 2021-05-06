@@ -1,3 +1,4 @@
+
 from Bio import SeqIO
 import csv
 import os
@@ -10,7 +11,6 @@ def transpose(file): #method for transposing the pres/abs matrix
     new_header = rez.iloc[0]
     rez =rez[1:]
     rez.columns =new_header #removing header made during the transposition and replacing with the first line of the matrix
-    rez.to_csv("data-transposed.csv")
     return rez
 
 
@@ -101,10 +101,10 @@ r = transpose("cluster_pres_abs_matrix.csv") #transpose full matrix
 
 #Splitting the matrix up into each symptom with the added control no LUTS
 
-control = r.loc[r['Strain Symptom'] == "0"] #pulling out all of the control patient sample rows
-symp1 = r.loc[r['Strain Symptom'] == "1"] #pulling out all of the symptom 1 patient sample rows
-symp2 = r.loc[r['Strain Symptom'] == "2"] #pulling out all of the symptom 2 patient sample rows
-symp3 = r.loc[r['Strain Symptom'] == "3"] #pulling out all of the symptom 3 patient sample rows
+control = r.loc[r['Strain Symptom'] == "Control"] #pulling out all of the control patient sample rows
+symp1 = r.loc[r['Strain Symptom']== "Symptom 1"] #pulling out all of the symptom 1 patient sample rows
+symp2 = r.loc[r['Strain Symptom'] == "Symptom 2"] #pulling out all of the symptom 2 patient sample rows
+symp3 = r.loc[r['Strain Symptom'] == "Symptom 3"] #pulling out all of the symptom 3 patient sample rows
 
 # #combining a new dataframe with each symptom and the control group for correlation testing
 
@@ -133,6 +133,3 @@ symp2_list = makeResultsList("Symptom 2",symp2_pos_neg,symp2_pos_gene_name,symp2
 symp3_list = makeResultsList("Symptom 3",symp3_pos_neg,symp3_pos_gene_name,symp3_neg_gene_name,symp3_count)
 
 makeResultsTable(symp1_list,symp2_list,symp3_list)
-
-
-
