@@ -39,7 +39,7 @@ https://www.frontiersin.org/articles/10.3389/fmicb.2020.02094/full
 #### Scipy.stats
 - **From Scipy.stats**
   - kendalltau
-* https://www.statisticshowto.com/kendalls-tau/
+  - https://www.statisticshowto.com/kendalls-tau/
  #### Pandas
 * https://pandas.pydata.org/pandas-docs/stable/getting_started/install.html
  #### Biopython
