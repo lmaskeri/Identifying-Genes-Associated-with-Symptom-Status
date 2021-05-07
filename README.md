@@ -4,6 +4,10 @@
 
 Pathogenic bacteria often rely on virulence factors encoded in their genome to infect a host and cause disease. Our knowledge about virulence factors and how they affect the pathogenicity of bacteria remains limited. For example, we do not yet understand how some bacterial strains with genes encoding for known virulence factors do not cause disease, while others without these genes do. Studies in comparative genomics can address this conundrum by comparing symptomatic and asymptomatic genomes  in order to identify genes associated with the presence or absence of symptoms. Therefore, our goal is to  develop a cohesive pipeline that will annotate the genomes from several strains of a single species of bacteria, cluster the strains’ genes based on sequence similarity, and analyze how the homologous genes shared between them can be indicative to the presence or absence of a certain disease. This tool will give the user the ability to quickly, efficiently and accurately perform analysis on genomes of their choice.
 
+## Project Objectives
+
+![Project 5 Overview](https://github.com/lmaskeri/Identifying-Genes-Associated-with-Symptom-Status/blob/main/wiki-images/project5_broad_overview.jpg)
+
 
 ## Test Dataset
 
