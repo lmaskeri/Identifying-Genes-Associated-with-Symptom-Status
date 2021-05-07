@@ -125,6 +125,6 @@ OR
 python3 project_wrapper.py user
 ```
 
-**Important Note for the user flag: Please name your assembly files within the “Assemblies” folder the same as the first column in the “Data_Information.csv” file. Please see an example of what these input files should look like in the “User_Data_Example” folder.**
+**Important Note for the user flag: Please name your assembly files within the “Assemblies” folder the same as the first column in the “Data_Information.csv” file. Please see an example of what these input files should look like in the “User_Data_Example” folder. Make sure to place both the "Assemblies" folder and the "Data_Information.csv" file that you create within the main working directory of the cloned repo! **
 
 
