@@ -78,17 +78,20 @@ https://docs.conda.io/en/latest/miniconda.html#linux-installers
 
 Follow this link and download the Miniconda installer for Linux --  match the version of python that you have installed. In this case, we used the Miniconda3-latest-Linux-x86_64.sh installer.
 
-To install, download the installer and place into your working directory. Then run this command and proceed through installation of Miniconda:
+To install, download the installer and place into your working directory. Then run this command and proceed through installation of Miniconda, accepting all defaults:
 
 ```
 bash Miniconda3-latest-Linux-x86_64.sh
 ```
-Then initalize your shell for conda using this command:
+Make sure to initalize your shell for conda using this command if you accidentally chose "no" during installation:
 ```
 conda init
 ```
-If this is your first time installing conda, please close out of your terminal and restart.
-
+Run the ``` conda --version``` command to ensure that conda installed properly. If there are any issues (i.e. conda: command not found), please close out of your terminal, restart and run this command using your own home directory in place of $HOME:
+```
+source $HOME/miniconda3/bin/activate
+```
+Run the ``` conda --version``` command to ensure that conda was activated if you were getting any errors before.
 
 **2.	Set up Prokka Environment**
 
