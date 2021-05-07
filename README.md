@@ -110,8 +110,11 @@ conda activate prokka-env
 **3.	Install Appropriate Packages for Python Scripts**
 
   - Run these series of commands to install the packages used for this pipeline:
+  
  ```conda install biopython```
+ 
  ```conda install pandas```
+ 
  ```conda install scipy```
  
 **4.	Finally, run the project_wrapper.py script to proceed through the entire pipeline.**
