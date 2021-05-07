@@ -59,12 +59,12 @@ Python script that calculates the correlation coefficents between each cluster's
 Python script to run all os commands and scripts for the pipeline.
 
 ## Output Files
-### 1. _correlation_results.txt
-Hold the cluster names and their associated correlation value for each symptom
-### 2. _correlation_matrix.csv
-A list of significantly correlated cluster for each symptom
+### 1. Three _correlation_results.txt files corresponding to each symptom group
+A list of significantly correlated clusters for each symptom and the most positively and most negatively correlated cluster names.
+### 2. Three _correlation_matrix.csv files corresponing to each symptom group + control
+A matrix holding all the cluster names and their associated correlation value for each symptom and control group.
 ### 3. ResultsTable.csv
-Summary information about each symptom in a table format
+Summary information about the most negatively and most positively correlated clusters, as well as the genes associated with those clusters.
 
 ## Installation
 
