@@ -83,7 +83,12 @@ To install, download the installer and place into your working directory. Then r
 ```
 bash Miniconda3-latest-Linux-x86_64.sh
 ```
-Important Note: If this is the first time you are installing Conda, please exit the terminal and log in again.
+Then initalize your shell for conda using this command:
+```
+conda init
+```
+If this is your first time installing conda, please close out of your terminal and restart.
+
 
 **2.	Set up Prokka Environment**
 
